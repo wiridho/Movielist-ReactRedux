@@ -22,7 +22,7 @@ export default function FooterSection() {
                         <span><Link className='link_terms'>Privacy & Policy</Link></span>
                         <span><Link className='link_terms'>Press Room</Link></span>
                     </div>
-                    <div><p>© 2022 Copyright Wiridho Partuaon Tambunan</p></div>
+                    <div className='copyright'><span>© 2022 Copyright Wiridho Partuaon Tambunan</span></div>
                 </div>
             </div>
         </div >

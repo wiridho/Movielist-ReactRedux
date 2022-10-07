@@ -44,3 +44,7 @@
 .link_terms:hover {
     color: red;
 }
+
+.copyright {
+    padding: 1rem;
+}
