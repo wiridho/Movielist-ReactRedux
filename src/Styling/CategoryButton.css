@@ -1,0 +1,12 @@
+.category_wrapper {
+    margin-bottom: 2rem;
+}
+
+.button_wrapper .button_category {
+    width: 10rem;
+    border-radius: 18px;
+}
+
+.button_category:hover {
+    border: 1px solid red;
+}

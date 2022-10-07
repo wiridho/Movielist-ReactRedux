@@ -1,0 +1,23 @@
+.popular_wrapper {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.card-wrapper h2 {
+    margin-bottom: 2.5rem;
+}
+
+.popular_movie {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popular_movie Link {
+    text-decoration: none;
+}
+
+.see_all_movie {
+    margin-top: 1rem;
+    color: red;
+    text-decoration: none;
+}

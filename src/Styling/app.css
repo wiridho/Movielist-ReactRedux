@@ -1,0 +1,10 @@
+.wrapper-movies {
+    position: relative;
+}
+
+.wrapper-movies .wrapper-nav {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}

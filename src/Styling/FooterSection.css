@@ -1,0 +1,46 @@
+.footer_container {
+    background-color: #f1f5f9;
+    bottom: 0;
+}
+
+.footer_wrapper {
+    text-align: center;
+}
+
+.social_media_wrapper {
+    color: red;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem 1rem;
+
+}
+
+.social_media span {
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.terms_wrapper {
+    margin-bottom: 1rem;
+}
+
+.terms_wrapper span {
+    padding: 5px 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.terms_wrapper span .link_terms {
+    color: black;
+    cursor: pointer !important;
+    text-decoration: none;
+}
+
+.terms_wrapper span .link_terms:hover {
+    color: red !important;
+    cursor: pointer;
+}
+
+.link_terms:hover {
+    color: red;
+}
