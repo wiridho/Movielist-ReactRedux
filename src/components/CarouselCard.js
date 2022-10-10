@@ -8,9 +8,9 @@ function CarouselCard({ database }) {
                 return (
                     <Carousel.Item interval={1000} key={index}>
                         <img
-                            style={{ height: '100vh', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
+                            style={{ height: '100vh', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', }}
                             key={index}
-                            className="d-block w-100"
+                            className="d-block w-100 carousel_img"
                             src={`https://image.tmdb.org/t/p/original/${items.backdrop_path}`}
                             alt="First slide"
                         />
