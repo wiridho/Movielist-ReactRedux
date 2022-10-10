@@ -12,11 +12,11 @@ export default function BannerDetailMovie({ movie }) {
                 </div>
                 <div className='detail_movie'>
                     <h1>{movie.title}</h1>
-                    {movie.genres && movie.genres.map((item, id) => (
+                    {/* {movie.genres && movie.genres.map((item, id) => (
                         <div className='genre_movie'>
                             <p key={item.id}>{item.name}</p>
                         </div>
-                    ))}
+                    ))} */}
                     <p>{movie.overview}</p>
                 </div>
             </div>
