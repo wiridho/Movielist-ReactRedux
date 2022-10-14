@@ -2,6 +2,15 @@
     position: relative;
 }
 
+.shadow {
+    position: absolute;
+    margin-top: -4rem;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to top, rgba(255, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    overflow-y: hidden;
+}
+
 .image_movie {
     position: absolute;
     z-index: -1;
@@ -13,5 +22,5 @@
 
 .detail_movie {
     position: absolute;
-    top: 40%;
+    top: 4 0%;
 }

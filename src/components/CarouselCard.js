@@ -1,7 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 
 function CarouselCard({ database }) {
-    console.log(database)
     return (
         <Carousel className="carousel-wrapper">
             {database.slice(6, 9).map((items, index) => {
@@ -15,8 +14,7 @@ function CarouselCard({ database }) {
                             alt="First slide"
                         />
                         <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+
                         </Carousel.Caption>
                     </Carousel.Item>
                 )

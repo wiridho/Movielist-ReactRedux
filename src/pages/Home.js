@@ -21,7 +21,6 @@ export default function Home() {
       const genreResponse = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`)
       setDatabase(response.data.results)
       setGenre(genreResponse.data.genres)
-      console.log(genre)
     } catch (error) {
       console.log(error)
     }

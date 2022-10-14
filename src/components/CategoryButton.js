@@ -35,7 +35,7 @@ export default function CategoryButton() {
 					className="mySwiper">
 					{genre && genre.map((item, index) => (
 						<SwiperSlide key={index} className='button_wrapper'>
-							<Button key={item.id} className='button_category' style={{ color: 'red', background: 'none', border: '1px solid red' }} onClick={() => navigate(`/category/${item.name}/${item.id}`)} > {item.name} </Button>
+							<Button key={item.id} className='button_category' variant='outline-danger' style={{ color: 'red', background: 'none' }} onClick={() => navigate(`/category/${item.name}/${item.id}`)} > {item.name} </Button>
 						</SwiperSlide>
 					))}
 				</Swiper>

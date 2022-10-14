@@ -13,6 +13,10 @@ body {
 }
 
 /* Button */
+.nav-link {
+    display: flex;
+}
+
 .nav-link .auth {
     padding: 8px 20px;
     border-radius: 50px;
@@ -23,30 +27,27 @@ body {
 
 .nav-link .login {
     border: 1px solid var(--color-red);
-    color: var(--color-red);
+    color: var(--color-red) !important;
     background-color: transparent;
 }
 
 .nav-link .login:hover {
     border: 1.5px solid var(--color-red);
-    color: var(--color-red);
+    color: var(--color-red) !important;
     background: white;
 }
 
 .nav-link .regist {
     outline: none;
     border: none;
-    color: var(--color-white);
-    background-color: var(--color-red);
+    color: var(--color-white) !important;
+    background-color: var(--color-red) !important;
 }
 
 .navbar-nav .input-search {
+    color: ;
     margin: 0 auto;
-
     border-radius: 100px;
-    /* width: 100%; */
-    /* height: 2.1rem; */
-    /* padding: 10px 15px; */
     border: 0.5px solid rgb(212, 212, 212);
 }
 
@@ -60,11 +61,26 @@ body {
     width: 100%;
     height: 2.1rem;
     padding: 10px 15px;
-    border: 1px solid rgb(243, 243, 243);
+    border: 1px solid rgb(255, 255, 255);
     background-color: transparent !important;
 }
 
+.input-search:hover {
+    border: 1px solid red;
+}
+
+.input-search:focus Form.Control {
+    outline: none;
+    border: none !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.input-group:active {
+    outline: none;
+    border: none;
+}
+
 .input-search::placeholder {
-    color: rgb(228, 228, 228) !important;
+    color: white !important;
     font-size: 14px;
 }
