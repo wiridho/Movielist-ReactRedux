@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Styling/Navigation.css'
 import '../Styling/app.css'
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
@@ -11,52 +12,82 @@ import LoginModal from './LoginModal'
 import RegistrasiModal from './RegistrasiModal';
 
 
+
 export default function Navigation() {
+	const [token, setToken] = useState(false)
+	const [search, setSearch] = useState('')
+	const navigate = useNavigate()
+
+	const handleSubmit = () => {
+		navigate(`/search/${search}`)
+	}
+
+	const handleLogout = (e) => {
+		e.preventDefault()
+		setToken(false)
+		localStorage.removeItem('dataUser')
+	}
+	const userData = JSON.parse(localStorage.getItem('dataUser'))
+
+	useEffect(() => {
+		if (userData) {
+			setToken(true)
+		}
+	}, [token])
+
+	const firstName = userData != null ? userData['first_name'] : ''
+	const lastName = userData != null ? userData['last_name'] : ''
 
 
+	return (
+		<div className=''>
+			<Navbar className='wrapper-nav'>
+				<Container className='navbar-container'>
+					<Nav className="navbar-nav w-100 d-flex justify-content-between align-items-center">
+						<Navbar.Brand href="#home" className="mt-3">
+							<img
+								src="/logomovie.svg"
+								width="180"
+								className="align-top"
+								style={{ marginTop: '-10px' }}
+								alt="Movie List" />
+						</Navbar.Brand>
+						<div className='nav-link'>
+							<Form onSubmit={handleSubmit}>
+								<InputGroup className='input-group'>
+									<Form.Control
+										className="input-search"
+										placeholder="What do you want to watch?"
+										aria-label="Recipient's username"
+										aria-describedby="basic-addon2"
+										onChange={(e) => setSearch(e.target.value)}
+									/>
+								</InputGroup>
+							</Form>
+						</div>
+						<div className='nav-link'>
+							{token ? (
+								<>
+									<div className='profil'>
+										<img className='image' src={`https://ui-avatars.com/api/?name=${firstName}+${lastName}`} width="40" height="40" alt="" />
+										<span className='name' style={{ color: 'white' }}>{firstName} </span>
+										<Button className='logout' variant='danger' size='sm' onClick={handleLogout}>Logout</Button>
+									</div>
+								</>
+							) :
+								(<>
+									<div className='nav-link buttonAuth'>
+										<LoginModal />
+										<RegistrasiModal />
+									</div>
 
-    const navigate = useNavigate()
-    const [search, setSearch] = useState('')
+								</>)}
+						</div>
+					</Nav>
 
+				</Container>
+			</Navbar>
 
-    const handleSubmit = () => {
-        navigate(`/search/${search}`)
-    }
-    return (
-        <div className=''>
-            <Navbar className='wrapper-nav'>
-                <Container className='navbar-container'>
-                    <Nav className="navbar-nav w-100 d-flex justify-content-between align-items-center">
-                        <Navbar.Brand href="#home" className="mt-3">
-                            <img
-                                src="/logomovie.svg"
-                                width="180"
-                                className="align-top"
-                                style={{ marginTop: '-10px' }}
-                                alt="Movie List" />
-                        </Navbar.Brand>
-                        <div className='nav-link'>
-                            <Form onSubmit={handleSubmit}>
-                                <InputGroup className='input-group'>
-                                    <Form.Control
-                                        className="input-search"
-                                        placeholder="What do you want to watch?"
-                                        aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2"
-                                        onChange={(e) => setSearch(e.target.value)}
-                                    />
-                                </InputGroup>
-                            </Form>
-                        </div>
-                        <div className='nav-link d-flex'>
-                            <LoginModal />
-                            <RegistrasiModal />
-                        </div>
-                    </Nav>
-
-                </Container>
-            </Navbar>
-
-        </div>
-    )
+		</div>
+	)
 }

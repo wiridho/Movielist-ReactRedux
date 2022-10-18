@@ -18,23 +18,26 @@ export default function RegistrasiModal() {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const request = await axios.post('http://notflixtv.herokuapp.com/api/v1/users', {
+            const request = await axios.post('https://notflixtv.herokuapp.com/api/v1/users', {
                 first_name: firstName,
                 last_name: lastName,
                 email: email,
                 password: password,
                 password_confirmation: passwordConfirmation
             })
-            const dataUser = request.data.data.token
+            const dataUser = request.data.data
             localStorage.setItem('dataUser', JSON.stringify(dataUser))
             setFirstName('')
             setLastName('')
             setEmail('')
             setPassword('')
             setPasswordConfirm('')
+            handleClose()
+            window.location.reload()
         } catch (error) {
             console.log(error)
         }
@@ -54,7 +57,7 @@ export default function RegistrasiModal() {
                         <Modal.Title>Register to your account</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit} >
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Control type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)} />
                             </Form.Group>

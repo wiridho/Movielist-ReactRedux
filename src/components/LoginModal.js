@@ -5,6 +5,7 @@ import axios from 'axios'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { GoogleLogin } from 'react-google-login';
 
 export default function LoginModal() {
 
@@ -17,6 +18,10 @@ export default function LoginModal() {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
+    const responseGoogle = (response) => {
+        const userOAuth = response;
+        localStorage.setItem('userOAuth', JSON.stringify(userOAuth))
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -29,6 +34,7 @@ export default function LoginModal() {
             localStorage.setItem('dataUser', JSON.stringify(dataUser))
             setEmail('')
             setPassword('')
+            window.location.reload()
         } catch (error) {
             console.log(error)
         }
@@ -36,14 +42,12 @@ export default function LoginModal() {
     return (
         <div className=''>
             <Button className='auth login' onClick={handleShow}>Login</Button>
-
             <Modal
                 className='modal_container'
                 show={show}
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false} >
-
                 <div className='modal_body'>
                     <Modal.Header closeButton>
                         <Modal.Title>Log in to your account</Modal.Title>
@@ -61,6 +65,14 @@ export default function LoginModal() {
                             <Button variant="danger" type="submit">
                                 Login
                             </Button>
+                            <GoogleLogin
+                                clientId="104682645216-tb3e262c9t89kr536spqedig8142rssa.apps.googleusercontent.com"
+                                buttonText="Login"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                                scope='profile'
+                            />
                         </Form>
                     </Modal.Body>
                 </div>
