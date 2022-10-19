@@ -72,7 +72,7 @@ export default function Navigation() {
 							{token ? (
 								<>
 									<div className='profil'>
-										<img className='image' src={`https://ui-avatars.com/api/?name=${userData.first_name}+${userData.last_name}`} width="40" height="40" alt="" />
+										<img className='image' src={userData ? `https://ui-avatars.com/api/?name=${userData.first_name} + ${userData.last_name}` : 'https://ui-avatars.com/api/?name=Google&User'} width="40" height="40" alt="" />
 										<span className='name' style={{ color: 'white' }}>{userData ? userData.first_name : usernameGoogle}</span>
 										<Button className='logout' variant='danger' size='sm' onClick={handleLogout}>Logout</Button>
 									</div>
@@ -83,7 +83,6 @@ export default function Navigation() {
 										<LoginModal setToken={setToken} />
 										<RegistrasiModal />
 									</div>
-
 								</>}
 						</div>
 					</Nav>
