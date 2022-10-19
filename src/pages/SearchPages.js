@@ -11,6 +11,7 @@ export default function SearchPages() {
 
     useEffect(() => {
         loadData()
+        // eslint-disable-next-line
     }, [])
 
     const loadData = async () => {

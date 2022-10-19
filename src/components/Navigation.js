@@ -33,6 +33,7 @@ export default function Navigation() {
 		if (userData) {
 			setToken(true)
 		}
+		// eslint-disable-next-line
 	}, [token])
 
 	const firstName = userData != null ? userData['first_name'] : ''

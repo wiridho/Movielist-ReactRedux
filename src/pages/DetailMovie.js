@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 
 import Navigation from '../components/Navigation'
 import BannerDetailMovie from '../components/BannerDetailMovie'
+import CardMovie from '../components/CardMovie'
 
 export default function DetailMovie() {
     const apiKey = '39d534102975349064b234a5f47263bb'
@@ -16,6 +17,7 @@ export default function DetailMovie() {
     useEffect(() => {
         getDetail();
         getCast();
+        // eslint-disable-next-line
     }, [])
 
     const getDetail = async () => {
@@ -40,6 +42,7 @@ export default function DetailMovie() {
         <div>
             <Navigation />
             <BannerDetailMovie movie={database} />
+            <CardMovie movie={cast} />
         </div>
     )
 }
