@@ -18,6 +18,8 @@ export default function Navigation() {
 	const [search, setSearch] = useState('')
 	const navigate = useNavigate()
 
+	const usernameGoogle = 'Google_User'
+
 	const handleSubmit = () => {
 		navigate(`/search/${search}`)
 	}
@@ -25,19 +27,19 @@ export default function Navigation() {
 	const handleLogout = (e) => {
 		e.preventDefault()
 		setToken(false)
-		localStorage.removeItem('dataUser')
+		localStorage.clear()
+		window.location.reload()
 	}
-	const userData = JSON.parse(localStorage.getItem('dataUser'))
+
+	const userData = JSON.parse(localStorage.getItem('user'))
+
 
 	useEffect(() => {
 		if (userData) {
 			setToken(true)
 		}
 		// eslint-disable-next-line
-	}, [token])
-
-	const firstName = userData != null ? userData['first_name'] : ''
-	const lastName = userData != null ? userData['last_name'] : ''
+	}, [])
 
 
 	return (
@@ -70,25 +72,23 @@ export default function Navigation() {
 							{token ? (
 								<>
 									<div className='profil'>
-										<img className='image' src={`https://ui-avatars.com/api/?name=${firstName}+${lastName}`} width="40" height="40" alt="" />
-										<span className='name' style={{ color: 'white' }}>{firstName} </span>
+										<img className='image' src={`https://ui-avatars.com/api/?name=${userData.first_name}+${userData.last_name}`} width="40" height="40" alt="" />
+										<span className='name' style={{ color: 'white' }}>{userData ? userData.first_name : usernameGoogle}</span>
 										<Button className='logout' variant='danger' size='sm' onClick={handleLogout}>Logout</Button>
 									</div>
 								</>
 							) :
-								(<>
+								<>
 									<div className='nav-link buttonAuth'>
-										<LoginModal />
+										<LoginModal setToken={setToken} />
 										<RegistrasiModal />
 									</div>
 
-								</>)}
+								</>}
 						</div>
 					</Nav>
-
 				</Container>
 			</Navbar>
-
 		</div>
 	)
 }

@@ -30,7 +30,7 @@ export default function RegistrasiModal() {
                 password_confirmation: passwordConfirmation
             })
             const dataUser = request.data.data
-            localStorage.setItem('dataUser', JSON.stringify(dataUser))
+            localStorage.setItem('user', JSON.stringify(dataUser))
             setFirstName('')
             setLastName('')
             setEmail('')
@@ -60,6 +60,7 @@ export default function RegistrasiModal() {
                         <Form onSubmit={handleSubmit} >
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Control type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)} />
+
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Control type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)} />
