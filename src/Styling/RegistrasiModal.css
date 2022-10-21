@@ -1,0 +1,11 @@
+.form-group {
+    position: relative;
+
+}
+
+.icon {
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+
+}

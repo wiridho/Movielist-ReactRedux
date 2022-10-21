@@ -36,6 +36,7 @@ export default function Navigation() {
 
 	useEffect(() => {
 		if (userData) {
+			console.log(userData)
 			setToken(true)
 		}
 		// eslint-disable-next-line
@@ -81,7 +82,7 @@ export default function Navigation() {
 								<>
 									<div className='nav-link buttonAuth'>
 										<LoginModal setToken={setToken} />
-										<RegistrasiModal />
+										<RegistrasiModal setToken={setToken} />
 									</div>
 								</>}
 						</div>
