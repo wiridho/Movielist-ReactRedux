@@ -1,11 +1,12 @@
 import Carousel from 'react-bootstrap/Carousel';
+import '../Styling/CarouselCard.css'
 
 function CarouselCard({ database }) {
     return (
         <Carousel className="carousel-wrapper">
             {database.slice(6, 9).map((items, index) => {
                 return (
-                    <Carousel.Item interval={1000} key={index}>
+                    <Carousel.Item interval={2000} key={index}>
                         <img
                             style={{ height: '100vh', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', }}
                             key={index}

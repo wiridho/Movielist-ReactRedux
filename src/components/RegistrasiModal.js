@@ -89,7 +89,7 @@ export default function RegistrasiModal({ setToken }) {
 
 	return (
 		<div>
-			<Button className='auth regist' onClick={handleShow}>Regis</Button>
+			<Button className='auth regist	' onClick={handleShow}>Register</Button>
 			<Modal
 				className='modal_container'
 				show={show}
@@ -104,28 +104,28 @@ export default function RegistrasiModal({ setToken }) {
 					<Modal.Body>
 						<Form onSubmit={handleSubmit} >
 							{/* FirstName */}
-							<Form.Group className="mb-3 form-group" controlId="formBasicEmail">
+							<Form.Group className="mb-3 form-group" controlId="firstName">
 								<Form.Control type="text" placeholder="First Name" name='first_name' value={formValues.first_name} onChange={handleChange} />
 								<CiUser className='icon' />
 								<p className='text-danger'>{formError.first_name}</p>
 							</Form.Group>
 							{/* LastName */}
-							<Form.Group className="mb-3 form-group" controlId="formBasicEmail">
+							<Form.Group className="mb-3 form-group" controlId="lastName">
 								<Form.Control type="text" placeholder="Last Name" name='last_name' value={formValues.last_name} onChange={handleChange} />
 								<CiUser className='icon' />
 								<p className='text-danger'>{formError.last_name}</p>
 							</Form.Group>
-							<Form.Group className="mb-3 form-group" controlId="formBasicEmail">
+							<Form.Group className="mb-3 form-group" controlId="email">
 								<Form.Control type="email" placeholder="Email Adress" name='email' value={formValues.email} onChange={handleChange} />
 								<BsEnvelope className='icon' />
 								<p className='text-danger'> {formError.email}</p>
 							</Form.Group>
-							<Form.Group className="mb-3 form-group" controlId="formBasicEmail">
+							<Form.Group className="mb-3 form-group" controlId="password">
 								{(showPasswords === false) ? <BsFillEyeSlashFill className='icon' onClick={clickIcon} /> : <BsFillEyeFill className='icon' onClick={clickIcon} />}
 								<Form.Control type={(showPasswords === false) ? 'password' : 'text'} placeholder="Password" onChange={handleChange} name='password' value={formValues.password} />
 								<p className='text-danger'> {formError.password}</p>
 							</Form.Group>
-							<Form.Group className="mb-3 form-group" controlId="formBasicPassword">
+							<Form.Group className="mb-3 form-group" controlId="passwordConfirmation">
 								{(showPasswords === false) ? <BsFillEyeSlashFill className='icon' onClick={clickIcon} /> : <BsFillEyeFill className='icon' onClick={clickIcon} />}
 								<Form.Control type={(showPasswords === false) ? 'password' : 'text'} placeholder="Password Confirmation" onChange={handleChange} name='password_confirmation' value={formValues.password_confirmation} />
 								<p className='text-danger'> {formError.password_confirmation}</p>

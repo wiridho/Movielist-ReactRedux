@@ -3,6 +3,14 @@
 
 }
 
+#firstName,
+#lastName,
+#email,
+#password,
+#passwordConfirmation {
+    border-radius: 50rem;
+}
+
 .icon {
     position: absolute;
     right: 1rem;

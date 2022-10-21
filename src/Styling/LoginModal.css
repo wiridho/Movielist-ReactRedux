@@ -19,3 +19,23 @@
     top: 0.75rem;
 
 }
+
+#email,
+#password {
+    border-radius: 50%;
+}
+
+.buttonWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.buttonLogin {
+    display: inline-block;
+    width: 100%;
+    padding: 1px;
+}
+
+.auth-google {
+    margin-left: 1rem;
+}

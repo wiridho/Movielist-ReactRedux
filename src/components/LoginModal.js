@@ -111,36 +111,42 @@ export default function LoginModal({ setToken }) {
 						<Modal.Body>
 							{/* Form Start */}
 							<Form onSubmit={handleSubmit}>
-								<Form.Group className="mb-3 form-group" controlId="formBasicEmail">
+								<Form.Group className="mb-3 form-group" controlId="email">
 									<Form.Control type="email" placeholder="Enter email" onChange={handleChange} name='email' value={formValues.email} />
 									<BsEnvelope className='icon' />
 									<p className='text-danger'>{formError.email}</p>
 								</Form.Group>
-								<Form.Group className="mb-3 form-group" controlId="formBasicPassword">
+								<Form.Group className="mb-3 form-group" controlId="password">
 									<Form.Control type={(showPasswords === false) ? 'password' : 'text'} placeholder="Password" onChange={handleChange} name='password' value={formValues.password} />
 									<div>
 										{(showPasswords === false) ? <BsFillEyeSlashFill className='icon' onClick={clickIcon} /> : <BsFillEyeFill className='icon' onClick={clickIcon} />}
 									</div>
 									<p className='text-danger'>{formError.password}</p>
 								</Form.Group>
-								<Button variant="danger" type="submit">
-									Login
-								</Button>
-								<GoogleLogin
-									onError={() => {
-										console.log('Login Failed');
-									}}
-									onSuccess={responseGoogle => {
-										localStorage.setItem('google_user', responseGoogle.credential)
-										const token = localStorage.getItem('google_user');
-										if (token) {
-											setToken(true);
-										} else {
-											setToken(false);
-										}
-										handleClose();
-									}}
-								/>
+								<div className='buttonWrapper'>
+									<div className="auth-login">
+										<Button className='buttonLogin ' variant="danger" type="submit">
+											Login
+										</Button>
+									</div>
+									<div className='auth-google'>
+										<GoogleLogin
+											onError={() => {
+												console.log('Login Failed');
+											}}
+											onSuccess={responseGoogle => {
+												localStorage.setItem('google_user', responseGoogle.credential)
+												const token = localStorage.getItem('google_user');
+												if (token) {
+													setToken(true);
+												} else {
+													setToken(false);
+												}
+												handleClose();
+											}}
+										/>
+									</div>
+								</div>
 							</Form>
 							{/* Form End */}
 							{/* <pre>{JSON.stringify(formValues, undefined, 2)}</pre> */}
