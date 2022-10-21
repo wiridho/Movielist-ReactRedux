@@ -37,14 +37,13 @@ export default function RegistrasiModal({ setToken }) {
 		setFormError(validate(formValues))
 		try {
 			const request = await axios.post('https://notflixtv.herokuapp.com/api/v1/users', formValues)
-			const responseToken = request.data.data.token
+			// const responseToken = request.data.data.token
 			const dataUser = request.data.data
-			localStorage.setItem('token', (responseToken))
+			localStorage.setItem('token', JSON.stringify(request.data.data.token))
 			localStorage.setItem('user', JSON.stringify(dataUser))
 			setFormValues({ first_name: "", last_name: "", email: "", password: "", password_confirmation: "" })
 			//check token
 			const token = localStorage.getItem('token');
-			console.log(localStorage.getItem('user'))
 			if (token) {
 				setToken(true);
 			} else {

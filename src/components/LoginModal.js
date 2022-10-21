@@ -143,7 +143,7 @@ export default function LoginModal({ setToken }) {
 								/>
 							</Form>
 							{/* Form End */}
-							<pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+							{/* <pre>{JSON.stringify(formValues, undefined, 2)}</pre> */}
 						</Modal.Body>
 					</div>
 				</Modal>

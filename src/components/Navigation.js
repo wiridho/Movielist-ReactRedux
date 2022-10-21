@@ -32,11 +32,12 @@ export default function Navigation() {
 	}
 
 	const userData = JSON.parse(localStorage.getItem('user'))
+	const tokenGoogle = localStorage.getItem('google_user')
+	console.log(userData)
 
 
 	useEffect(() => {
-		if (userData) {
-			console.log(userData)
+		if (userData || tokenGoogle) {
 			setToken(true)
 		}
 		// eslint-disable-next-line
