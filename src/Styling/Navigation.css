@@ -19,6 +19,7 @@ body {
 
 .nav-link .buttonAuth {
     display: flex;
+    margin-right: 22px;
 }
 
 .nav-link .auth {
