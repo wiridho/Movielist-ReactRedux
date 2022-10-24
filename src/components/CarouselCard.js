@@ -6,7 +6,6 @@ function CarouselCard({ database }) {
 	return (
 		<Carousel className="carousel-wrapper">
 			{database.slice(6, 9).map((items, index) => {
-				console.log(items)
 				return (
 					<Carousel.Item interval={2000} key={index}>
 						<div
