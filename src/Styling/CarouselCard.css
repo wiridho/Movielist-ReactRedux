@@ -12,24 +12,28 @@
     visibility: hidden;
 }
 
-.carousel-caption {
+.detailMovie {
     position: absolute;
-    top: 39vh;
-    left: 7rem;
-    bottom: 0vh;
-    width: 55%;
     text-align: left;
-}
-
-.movieLink {
-    /* background-color: red; */
+    left: -3rem;
+    bottom: 10rem;
 
 }
+
+
+
 
 .trailer {
-    border: 1px solid red;
-    background-color: red;
+    border: 1px solid #f33f3f;
+    background-color: #f33f3f;
     color: white;
     border-radius: 50px;
     padding: 12px;
+    transition: 0.3s;
+
+}
+
+.trailer:hover {
+    opacity: 1;
+    background-color: #FF9980;
 }

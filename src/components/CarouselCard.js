@@ -7,7 +7,7 @@ function CarouselCard({ database }) {
 		<Carousel className="carousel-wrapper">
 			{database.slice(6, 9).map((items, index) => {
 				return (
-					<Carousel.Item interval={2000} key={index}>
+					<Carousel.Item interval={4000} key={index}>
 						<div
 							style={{
 								position: 'absolute',
@@ -18,7 +18,7 @@ function CarouselCard({ database }) {
 						</div>
 
 						<Carousel.Caption>
-							<div className='container'>
+							<div className='detailMovie'>
 								<h1>{items.title ? items.title : items.original_title}</h1>
 								<p>{items.overview}</p>
 								<a className='movieLink' href={`https://www.youtube.com/results?search_query=${items.title ? items.title : items.original_title} trailer`}>
