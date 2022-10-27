@@ -26,7 +26,6 @@ function CarouselCard({ database }) {
 								</a>
 							</div>
 						</Carousel.Caption>
-
 						<img
 							style={{ height: '100vh', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', }}
 							key={index}

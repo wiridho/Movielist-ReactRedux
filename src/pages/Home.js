@@ -1,44 +1,37 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+
+import '../Styling/app.css'
 import Navigation from '../components/Navigation'
 import CardMovie from '../components/CardMovie'
 import CategoryButton from '../components/CategoryButton'
 import CarouselCard from '../components/CarouselCard'
-import '../Styling/app.css'
 import PopularCategory from '../components/PopularCategory'
 import FooterSection from '../components/FooterSection'
 
+import { getMovies, getGenre, } from '../features/movie/movieSLice'
+
 
 export default function Home() {
-  const [database, setDatabase] = useState([])
-  const [genre, setGenre] = useState([])
+  const dispatch = useDispatch()
+  const { movies, genre } = useSelector((state) => state.movies)
   const apiKey = '39d534102975349064b234a5f47263bb'
 
-
-  const loadData = async () => {
-    try {
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
-      const genreResponse = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`)
-      setDatabase(response.data.results)
-      setGenre(genreResponse.data.genres)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   useEffect(() => {
-    loadData()
-  }, [])
+    dispatch(getMovies(apiKey))
+    dispatch(getGenre(apiKey))
+  }, [dispatch])
 
   return (
     <div className='wrapper-movies'>
       <Navigation />
-      <CarouselCard database={database} />
+      <CarouselCard database={movies} />
       <PopularCategory title={'Popular Video'} />
-      <CardMovie database={database} />
+      <CardMovie database={movies} />
       <PopularCategory title={'Browse by Category'} />
       <CategoryButton genre={genre} />
-      <CardMovie database={database} />
+      <CardMovie database={movies} />
       <FooterSection />
     </div>
   )

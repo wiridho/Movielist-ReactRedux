@@ -3,7 +3,7 @@ import '../Styling/PopularCategory.css'
 import { HiArrowRight } from "react-icons/hi";
 import { Link } from 'react-router-dom'
 
-export default function PopularCategory({ title }) {
+export default function PopularCategory({ title, statuscast }) {
     return (
         <div className='container popular_wrapper'>
             <div className='popular_movie'>

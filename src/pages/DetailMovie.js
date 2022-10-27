@@ -1,48 +1,44 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-// import CardMovie from '../components/CardMovie'
+import { getMovieDetails, getMovieCast } from '../features/movie/movieDetailSlice'
 
 import Navigation from '../components/Navigation'
 import BannerDetailMovie from '../components/BannerDetailMovie'
 import CardMovie from '../components/CardMovie'
+import FooterSection from '../components/FooterSection'
+
 
 export default function DetailMovie() {
-    const apiKey = '39d534102975349064b234a5f47263bb'
-    const [database, setDatabase] = useState([])
-    const [cast, setCast] = useState([])
-    const location = useParams()
-    const id = location.id
+    const { id } = useParams();
+    const { details, cast } = useSelector((state) => state.details)
+    const dispatch = useDispatch()
+
+
 
     useEffect(() => {
-        getDetail();
-        getCast();
+        dispatch(getMovieDetails(id));
+        dispatch(getMovieCast(id));
         // eslint-disable-next-line
-    }, [])
+    }, [dispatch, id])
 
-    const getDetail = async () => {
-        try {
-            const tes = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`)
-            setDatabase(tes.data)
-        } catch (error) {
-            console.error(error)
-        }
-    }
 
-    const getCast = async () => {
-        try {
-            const tes = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`)
-            setCast(tes.data.cast)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const getCast = async () => {
+    //     try {
+    //         const tes = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`)
+    //         setCast(tes.data.cast)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
 
     return (
         <div>
             <Navigation />
-            <BannerDetailMovie movie={database} />
-            <CardMovie movie={cast} />
-        </div>
+            <BannerDetailMovie movie={details} />
+            <CardMovie database={cast} statuscast='false' />
+            <FooterSection />
+        </div >
     )
 }

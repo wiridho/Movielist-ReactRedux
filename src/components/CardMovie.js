@@ -8,7 +8,7 @@ import "../Styling/CardMovie.css";
 import { BsFillStarFill } from "react-icons/bs";
 
 
-export default function CardMovie({ database }) {
+export default function CardMovie({ database, statuscast }) {
     const navigation = useNavigate()
 
     return (
@@ -17,8 +17,32 @@ export default function CardMovie({ database }) {
                 slidesPerView={4}
                 spaceBetween={30}
                 className="mySwiper">
-                {database && database.map((items, index) => {
-                    return (
+                {database && database.map((items, index) => (
+                    statuscast ?
+                        <SwiperSlide key={index}>
+                            <Card key={index}
+                                className='card'
+                                border="light"
+                                style={{ width: '15rem', cursor: 'pointer', border: 'none' }}
+                                onClick={() => navigation(`/${items.id}`)} >
+                                <div className='image'>
+                                    <img
+                                        className='image_img'
+                                        src={`https://image.tmdb.org/t/p/w500${items.profile_path}`}
+                                        alt='card'
+                                    />
+                                </div>
+                                <div className='image_overlay'>
+                                    <div className='image_title'><Card.Title>{items.title}</Card.Title></div>
+                                    <div className='image_description'>
+                                        <Card.Text className='d-flex text-center'>
+                                            {items.name}<br />as <br /> {items.character}
+                                        </Card.Text>
+                                    </div>
+                                </div>
+                            </Card>
+                        </SwiperSlide>
+                        :
                         <SwiperSlide key={index}>
                             <Card key={index}
                                 className='card'
@@ -43,8 +67,7 @@ export default function CardMovie({ database }) {
                                 </div>
                             </Card>
                         </SwiperSlide>
-                    )
-                }
+                )
                 )}
             </Swiper>
         </div>
