@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 // Redux
 import { useDispatch } from "react-redux";
-import { isLogin } from "../features/movie/authSlice"
+import { isLogin } from "../features/movie/loginSlice"
 
 // Stylesheet
 import '../Styling/Navigation.css';
@@ -54,15 +54,6 @@ export default function LoginModal({ setToken }) {
 		// Validate error
 		setFormError(validate(formValues))
 		try {
-			// const request = await axios.post('https://notflixtv.herokuapp.com/api/v1/users/login', formValues)
-			// const responseToken = request.data.data.token
-			// const dataUser = request.data.data
-			// //get token
-			// localStorage.setItem('token', responseToken)
-			// //get user data
-			// localStorage.setItem('user', JSON.stringify(dataUser))
-			// setFormValues({ email: "", password: "" })
-			//check token
 			dispatch(isLogin(formValues))
 		} catch (error) {
 			console.log(error)
@@ -158,7 +149,6 @@ export default function LoginModal({ setToken }) {
 								</div>
 							</Form>
 							{/* Form End */}
-							{/* <pre>{JSON.stringify(formValues, undefined, 2)}</pre> */}
 						</Modal.Body>
 					</div>
 				</Modal>

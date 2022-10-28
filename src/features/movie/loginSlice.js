@@ -9,14 +9,18 @@ export const isLogin = createAsyncThunk(
             email: values.email,
             password: values.password,
         }
-        const req = await axios.post('https://notflixtv.herokuapp.com/api/v1/users/login', dataload)
-        const responseToken = req.data.data.token
-        const dataUser = req.data.data
-
-        //set token
-        localStorage.setItem('token', responseToken)
-        //set user data
-        localStorage.setItem('user', JSON.stringify(dataUser))
+        try {
+            const req = await axios.post('https://notflixtv.herokuapp.com/api/v1/users/login', dataload)
+            const responseToken = req.data.data.token
+            const dataUser = req.data.data
+            //set token
+            localStorage.setItem('token', responseToken)
+            //set user data
+            localStorage.setItem('user', JSON.stringify(dataUser))
+            window.location.reload()
+        } catch (error) {
+            console.error(error)
+        }
     }
 )
 

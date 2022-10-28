@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { getMovieDetails, getMovieCast } from '../features/movie/movieDetailSlice'
 
 import Navigation from '../components/Navigation'
+import CardCast from '../components/CardCast'
 import BannerDetailMovie from '../components/BannerDetailMovie'
 import CardMovie from '../components/CardMovie'
 import FooterSection from '../components/FooterSection'
@@ -23,20 +24,11 @@ export default function DetailMovie() {
     }, [dispatch, id])
 
 
-    // const getCast = async () => {
-    //     try {
-    //         const tes = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`)
-    //         setCast(tes.data.cast)
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
-
-
     return (
-        <div>
+        <div className=''>
             <Navigation />
             <BannerDetailMovie movie={details} />
+            <CardCast />
             <CardMovie database={cast} statuscast='false' />
             <FooterSection />
         </div >

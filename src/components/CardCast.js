@@ -1,10 +1,13 @@
 import React from 'react'
+import '../Styling/CardCast.css'
 
 export default function CardCast() {
     return (
 
         <>
-            <h1>Hello</h1>
+            <div className='container header'>
+                <h1>Movie Cast and Crew Info</h1>
+            </div>
         </>
     )
 }

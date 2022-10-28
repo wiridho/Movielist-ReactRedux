@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
+// 
+import { useDispatch } from "react-redux";
+import { isRegister } from "../features/movie/registerSlice"
+
+
+// Import styling
 import '../Styling/RegistrasiModal.css'
 import '../Styling/Navigation.css'
-import axios from 'axios';
+
+// React Bootstrap
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -11,6 +18,7 @@ import { BsFillEyeSlashFill, BsFillEyeFill, BsEnvelope } from 'react-icons/bs'
 import { CiUser } from "react-icons/ci";
 
 export default function RegistrasiModal({ setToken }) {
+	const dispatch = useDispatch()
 
 	const [show, setShow] = useState(false);
 	const handleShow = () => setShow(true);
@@ -36,27 +44,23 @@ export default function RegistrasiModal({ setToken }) {
 		e.preventDefault()
 		setFormError(validate(formValues))
 		try {
-			const request = await axios.post('https://notflixtv.herokuapp.com/api/v1/users', formValues)
-			// const responseToken = request.data.data.token
-			const dataUser = request.data.data
-			localStorage.setItem('token', JSON.stringify(request.data.data.token))
-			localStorage.setItem('user', JSON.stringify(dataUser))
-			setFormValues({ first_name: "", last_name: "", email: "", password: "", password_confirmation: "" })
-			//check token
-			const token = localStorage.getItem('token');
-			if (token) {
-				setToken(true);
-			} else {
-				setToken(false);
-			}
+			dispatch(isRegister(formValues))
+
 		} catch (error) {
 			console.log(error)
 		}
 	}
 	useEffect(() => {
+		const token = localStorage.getItem('token');
+		if (token) {
+			setToken(true);
+		} else {
+			setToken(false);
+		}
+		// eslint-disable-next-line
+	}, [formError])
 
-	}, [])
-
+	// Validate Form
 	const validate = (values) => {
 		const error = {}
 		const reg = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
