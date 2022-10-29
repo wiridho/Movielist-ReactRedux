@@ -40,7 +40,7 @@ body {
 .nav-link .login:hover {
     border: 1.5px solid var(--color-red);
     color: var(--color-red) !important;
-    background: white;
+    background: var(--color-white);
 }
 
 .nav-link .regist {
@@ -58,10 +58,11 @@ body {
 
 .navbar-nav .input {
     border-radius: 1rem;
-    border: 1px solid #fff;
+    border: 1px solid var(--color-white);
 }
 
 .input-search {
+    color: var(--color-white) !important;
     border-radius: 40px;
     width: 100%;
     height: 2.1rem;
@@ -86,7 +87,7 @@ body {
 }
 
 .input-search::placeholder {
-    color: white !important;
+    color: var(--color-white) !important;
     font-size: 14px;
 }
 

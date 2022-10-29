@@ -24,7 +24,7 @@ export default function CardMovie({ database, statuscast }) {
                                 className='card'
                                 border="light"
                                 style={{ width: '15rem', cursor: 'pointer', border: 'none' }}
-                                onClick={() => navigation(`/${items.id}`)} >
+                            >
                                 <div className='image'>
                                     <img
                                         className='image_img'

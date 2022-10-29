@@ -23,12 +23,24 @@ export const isLogin = createAsyncThunk(
         }
     }
 )
+export const isLoginGoogle = createAsyncThunk(
+    'islogin/loginGoogle', async (credential) => {
+        console.log(credential)
+        try {
+            //set token
+            localStorage.setItem('google_user', credential.credential)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+)
 
 
 export const loginSlice = createSlice({
     name: "login",
     initialState: {
         login: [],
+        loginGoogle: [],
         loading: false,
         error: false
     },
@@ -41,6 +53,8 @@ export const loginSlice = createSlice({
         },
         [isLogin.rejected]: (state) => {
             state.error = true;
+        }, [isLoginGoogle.fulfilled]: (state, { payload }) => {
+            state.loginGoogle = payload
         }
     }
 })

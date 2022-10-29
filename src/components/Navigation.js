@@ -33,7 +33,7 @@ export default function Navigation() {
 
 	const userData = JSON.parse(localStorage.getItem('user'))
 	const tokenGoogle = localStorage.getItem('google_user')
-	console.log(userData)
+	console.log(tokenGoogle)
 
 
 	useEffect(() => {
@@ -49,7 +49,8 @@ export default function Navigation() {
 			<Navbar className='wrapper-nav'>
 				<Container className='navbar-container'>
 					<Nav className="navbar-nav w-100 d-flex justify-content-between align-items-center">
-						<Navbar.Brand href="#home" className="mt-3">
+						<Navbar.Brand
+							href="/" className="mt-3">
 							<img
 								src="/logomovie.svg"
 								width="180"
@@ -76,7 +77,7 @@ export default function Navigation() {
 									<div className='profil'>
 										<img className='image' src={userData ? `https://ui-avatars.com/api/?name=${userData.first_name} + ${userData.last_name}` : 'https://ui-avatars.com/api/?name=Google&User'} width="40" height="40" alt="" />
 										<span className='name' style={{ color: 'white' }}>{userData ? userData.first_name : usernameGoogle}</span>
-										<Button className='logout' variant='danger' size='sm' onClick={handleLogout}>Logout</Button>
+										<Button className='logout m-2' variant='danger' size='sm' onClick={handleLogout}>Logout</Button>
 									</div>
 								</>
 							) :

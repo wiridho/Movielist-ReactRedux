@@ -47,4 +47,4 @@ export const registerSlice = createSlice({
     }
 })
 
-export default isRegister.reducer
+export default registerSlice.reducer

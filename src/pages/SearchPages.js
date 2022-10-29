@@ -4,6 +4,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { searchMovie } from '../features/movie/movieSLice'
 import CardMovie from '../components/CardMovie'
+import Navigation from '../components/Navigation'
+import BannerSearchMovie from '../components/BannerSearchMovie'
+import SearchResult from '../components/SearchResult'
+import FooterSection from '../components/FooterSection'
 
 
 export default function SearchPages() {
@@ -22,7 +26,11 @@ export default function SearchPages() {
 
     return (
         <div>
+            <Navigation />
+            <BannerSearchMovie query={query} />
+            <SearchResult query={query} />
             <CardMovie database={search} />
+            <FooterSection />
         </div>
     )
 }
