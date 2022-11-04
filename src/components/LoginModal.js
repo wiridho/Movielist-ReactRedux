@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import { auth, signInWithEmailAndPassword, signInWithGoogle, logInWithEmailAndPassword } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 // Redux
 import { useDispatch } from "react-redux";
 import { isLogin, isLoginGoogle } from "../features/movie/loginSlice"
@@ -20,6 +23,7 @@ import Form from 'react-bootstrap/Form';
 import { GoogleLogin } from '@react-oauth/google';
 
 export default function LoginModal({ setToken }) {
+	const [user, loading, error] = useAuthState(auth);
 	const dispatch = useDispatch();
 
 	// State for showpassword
@@ -50,17 +54,19 @@ export default function LoginModal({ setToken }) {
 
 
 	// Handle Submit for Google Login
-	const handleSubmitGoogle = async (credential) => {
-		dispatch(isLoginGoogle(credential))
-		const token = localStorage.getItem('google_user');
-		if (token) {
-			setToken(true);
-		} else {
-			setToken(false);
+	const handleSubmitGoogle = async () => {
+		try {
+			dispatch(isLoginGoogle())
+		} catch (error) {
+			console.log(error)
 		}
-		handleClose();
+		// const token = localStorage.getItem('google_user');
+		// if (token) {
+		// 	setToken(true);
+		// } else {
+		// 	setToken(false);
+		// }
 	}
-
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
@@ -68,6 +74,7 @@ export default function LoginModal({ setToken }) {
 		setFormError(validate(formValues))
 		try {
 			dispatch(isLogin(formValues))
+			// logInWithEmailAndPassword(formValues.email, formValues.password)
 		} catch (error) {
 			console.log(error)
 		}
@@ -104,9 +111,6 @@ export default function LoginModal({ setToken }) {
 		}
 		return error;
 	}
-
-
-
 	return (
 		<>
 			<div className=''>
@@ -147,13 +151,14 @@ export default function LoginModal({ setToken }) {
 								</Form>
 								{/* Form End */}
 								<div className='auth-google'>
-									<GoogleLogin
+									<button className='btn btn-primary' onClick={handleSubmitGoogle}>Login With Google </button>
+									{/* <GoogleLogin
 										buttonText='Login With google'
 										onError={() => {
 											console.log('Login Failed');
 										}}
 										onSuccess={handleSubmitGoogle}
-									/>
+									/> */}
 								</div>
 							</div>
 						</Modal.Body>
