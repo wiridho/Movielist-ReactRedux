@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // 
-import { auth, registerWithEmailAndPassword } from "../firebase";
+import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 
@@ -23,9 +23,9 @@ import { CiUser } from "react-icons/ci";
 
 export default function RegistrasiModal({ setToken }) {
 	const [user, loading, error] = useAuthState(auth);
-
 	const dispatch = useDispatch()
 
+	// show modal
 	const [show, setShow] = useState(false);
 	const handleShow = () => setShow(true);
 	const handleClose = () => setShow(false);
@@ -50,9 +50,8 @@ export default function RegistrasiModal({ setToken }) {
 		e.preventDefault()
 		setFormError(validate(formValues))
 		try {
-			// dispatch(isRegister(formValues))
-			registerWithEmailAndPassword(formValues.name, formValues.email, formValues.password)
-
+			dispatch(isRegister(formValues))
+			// registerWithEmailAndPassword(formValues.name, formValues.email, formValues.password)
 		} catch (error) {
 			console.log(error)
 		}
@@ -121,27 +120,18 @@ export default function RegistrasiModal({ setToken }) {
 								<CiUser className='icon' />
 								<p className='text-danger'>{formError.first_name}</p>
 							</Form.Group>
-							{/* LastName */}
-							{/* <Form.Group className="mb-3 form-group" controlId="lastName">
-								<Form.Control type="text" placeholder="Last Name" name='last_name' value={formValues.last_name} onChange={handleChange} />
-								<CiUser className='icon' />
-								<p className='text-danger'>{formError.last_name}</p>
-							</Form.Group> */}
+							{/* Email */}
 							<Form.Group className="mb-3 form-group" controlId="email">
 								<Form.Control type="email" placeholder="Email Adress" name='email' value={formValues.email} onChange={handleChange} />
 								<BsEnvelope className='icon' />
 								<p className='text-danger'> {formError.email}</p>
 							</Form.Group>
+							{/* Password */}
 							<Form.Group className="mb-3 form-group" controlId="password">
 								{(showPasswords === false) ? <BsFillEyeSlashFill className='icon' onClick={clickIcon} /> : <BsFillEyeFill className='icon' onClick={clickIcon} />}
 								<Form.Control type={(showPasswords === false) ? 'password' : 'text'} placeholder="Password" onChange={handleChange} name='password' value={formValues.password} />
 								<p className='text-danger'> {formError.password}</p>
 							</Form.Group>
-							{/* <Form.Group className="mb-3 form-group" controlId="passwordConfirmation">
-								{(showPasswords === false) ? <BsFillEyeSlashFill className='icon' onClick={clickIcon} /> : <BsFillEyeFill className='icon' onClick={clickIcon} />}
-								<Form.Control type={(showPasswords === false) ? 'password' : 'text'} placeholder="Password Confirmation" onChange={handleChange} name='password_confirmation' value={formValues.password_confirmation} />
-								<p className='text-danger'> {formError.password_confirmation}</p>
-							</Form.Group> */}
 							<Button variant="danger" type="submit">
 								Register
 							</Button>

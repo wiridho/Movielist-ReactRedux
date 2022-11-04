@@ -18,7 +18,6 @@ export default function Navigation() {
 	const [search, setSearch] = useState('')
 	const navigate = useNavigate()
 
-	const usernameGoogle = 'Google_User'
 
 	const handleSubmit = () => {
 		navigate(`/search/${search}`)
@@ -74,7 +73,7 @@ export default function Navigation() {
 							{token ? (
 								<>
 									<div className='profil'>
-										<img className='image' src={userData ? `https://ui-avatars.com/api/?name=${userData.first_name} + ${userData.last_name}` : `https://ui-avatars.com/api/?name=${tokenGoogle.displayName}`} width="40" height="40" alt="" />
+										<img className='image' src={userData ? `https://ui-avatars.com/api/?name=${userData.email}` : `https://ui-avatars.com/api/?name=${tokenGoogle.displayName}`} width="40" height="40" alt="" />
 										<span className='name' style={{ color: 'white' }}>{userData ? userData.email : tokenGoogle.displayName}</span>
 										<Button className='logout m-2' variant='danger' size='sm' onClick={handleLogout}>Logout</Button>
 									</div>

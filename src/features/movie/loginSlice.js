@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { auth, signInWithGoogle, logInWithEmailAndPassword } from "../../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { signInWithGoogle, logInWithEmailAndPassword } from "../../firebase";
 // import axios from "axios";
 
 

@@ -1,25 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { registerWithEmailAndPassword } from "../../firebase";
+
 
 //register 
 export const isRegister = createAsyncThunk(
     'isRegister/register', async (values) => {
-        console.log(values)
-        const dataload = {
-            first_name: values.first_name,
-            last_name: values.last_name,
-            email: values.email,
-            password: values.password,
-            password_confirmation: values.password_confirmation
-        }
+        // console.log(values)
+        // const dataload = {
+        //     first_name: values.first_name,
+        //     last_name: values.last_name,
+        //     email: values.email,
+        //     password: values.password,
+        //     password_confirmation: values.password_confirmation
+        // }
         try {
-            const req = await axios.post('https://notflixtv.herokuapp.com/api/v1/users', dataload)
-            const token = req.data.data.token
-            const dataUser = req.data.data
+            // const req = await axios.post('https://notflixtv.herokuapp.com/api/v1/users', dataload)
+            const register = await registerWithEmailAndPassword(values.name, values.email, values.password)
+            console.log(register.user)
+            // const token = req.data.data.token
+            // const dataUser = req.data.data
             //set token
-            localStorage.setItem('token', JSON.stringify(token))
+            localStorage.setItem('token', JSON.stringify(register.accessToken))
             //set data user
-            localStorage.setItem('user', JSON.stringify(dataUser))
+            localStorage.setItem('user', JSON.stringify(register))
             window.location.reload()
         } catch (error) {
             console.error(error)

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { auth, signInWithEmailAndPassword, signInWithGoogle, logInWithEmailAndPassword } from "../firebase";
+import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 // Redux
@@ -19,8 +19,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-// Login Google
-import { GoogleLogin } from '@react-oauth/google';
 
 export default function LoginModal({ setToken }) {
 	const [user, loading, error] = useAuthState(auth);

@@ -6,7 +6,6 @@ import {
     signInWithPopup,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
-    sendPasswordResetEmail,
     signOut,
 } from "firebase/auth";
 import {
@@ -84,7 +83,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
             name,
             authProvider: "local",
             email,
-        });
+        })
+        return user;
     } catch (err) {
         console.error(err);
         alert(err.message);
@@ -94,6 +94,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
 const logout = () => {
     signOut(auth);
 };
+
+
 export {
     auth,
     db,
