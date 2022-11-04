@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// 
-import { auth } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
-
-
 import { useDispatch } from "react-redux";
 import { isRegister } from "../features/movie/registerSlice"
 
@@ -22,7 +17,6 @@ import { BsFillEyeSlashFill, BsFillEyeFill, BsEnvelope } from 'react-icons/bs'
 import { CiUser } from "react-icons/ci";
 
 export default function RegistrasiModal({ setToken }) {
-	const [user, loading, error] = useAuthState(auth);
 	const dispatch = useDispatch()
 
 	// show modal
@@ -51,7 +45,6 @@ export default function RegistrasiModal({ setToken }) {
 		setFormError(validate(formValues))
 		try {
 			dispatch(isRegister(formValues))
-			// registerWithEmailAndPassword(formValues.name, formValues.email, formValues.password)
 		} catch (error) {
 			console.log(error)
 		}

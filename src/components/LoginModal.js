@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { auth } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -12,8 +10,8 @@ import '../Styling/Navigation.css';
 import '../Styling/LoginModal.css';
 
 // Import Icons
-import { BsEnvelope, BsFillEyeSlashFill, BsFillEyeFill, BsGoogle } from "react-icons/bs";
-import { AiOutlineGoogle } from "react-icons/ai";
+import { BsEnvelope, BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
+
 
 // React-bootstrap
 import Button from 'react-bootstrap/Button';
@@ -22,7 +20,6 @@ import Form from 'react-bootstrap/Form';
 
 
 export default function LoginModal({ setToken }) {
-	const [user, loading, error] = useAuthState(auth);
 	const dispatch = useDispatch();
 
 	// State for showpassword
