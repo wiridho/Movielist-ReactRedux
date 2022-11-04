@@ -10,7 +10,7 @@
 
 .form-group {
     position: relative;
-
+    width: 100%;
 }
 
 .icon {
@@ -20,22 +20,14 @@
 
 }
 
-#email,
-#password {
-    border-radius: 50%;
-}
 
-.buttonWrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
 
-.buttonLogin {
-    display: inline-block;
-    width: 100%;
-    padding: 1px;
-}
-
+.buttonLogin,
 .auth-google {
-    margin-left: 1rem;
+    width: 100%;
+}
+
+.logo_google {
+    width: 30px;
+    padding-bottom: 2px;
 }

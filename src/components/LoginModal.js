@@ -12,7 +12,8 @@ import '../Styling/Navigation.css';
 import '../Styling/LoginModal.css';
 
 // Import Icons
-import { BsEnvelope, BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
+import { BsEnvelope, BsFillEyeSlashFill, BsFillEyeFill, BsGoogle } from "react-icons/bs";
+import { AiOutlineGoogle } from "react-icons/ai";
 
 // React-bootstrap
 import Button from 'react-bootstrap/Button';
@@ -124,7 +125,7 @@ export default function LoginModal({ setToken }) {
 							<Modal.Title>Log in to your account</Modal.Title>
 						</Modal.Header>
 						<Modal.Body>
-							<div className='d-flex'>
+							<div className=''>
 								{/* Form Start */}
 								<Form onSubmit={handleSubmit}>
 									<Form.Group className="mb-3 form-group" controlId="email">
@@ -148,15 +149,9 @@ export default function LoginModal({ setToken }) {
 									</div>
 								</Form>
 								{/* Form End */}
-								<div className='auth-google'>
-									<button className='btn btn-primary' onClick={handleSubmitGoogle}>Login With Google </button>
-									{/* <GoogleLogin
-										buttonText='Login With google'
-										onError={() => {
-											console.log('Login Failed');
-										}}
-										onSuccess={handleSubmitGoogle}
-									/> */}
+								<div className='text-center'>
+									<span>Or</span>
+									<button className='btn btn-primary auth-google' onClick={handleSubmitGoogle}><img className='logo_google' src='https://www.kibrispdr.org/data/104/download-logo-google-png-9.png' alt='googleLogo' /> Login With Google </button>
 								</div>
 							</div>
 						</Modal.Body>
