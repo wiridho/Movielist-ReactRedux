@@ -151,7 +151,7 @@ export default function LoginModal({ setToken }) {
 								{/* Form End */}
 								<div className='text-center'>
 									<span>Or</span>
-									<button className='btn btn-primary auth-google' onClick={handleSubmitGoogle}><img className='logo_google' src='https://www.kibrispdr.org/data/104/download-logo-google-png-9.png' alt='googleLogo' /> Login With Google </button>
+									<button className='btn btn-primary auth-google' onClick={handleSubmitGoogle}><img className='logo_google' src='https://www.kibrispdr.org/data/104/download-logo-google-png-9.png' alt='googleLogo' />Login  Google </button>
 								</div>
 							</div>
 						</Modal.Body>
